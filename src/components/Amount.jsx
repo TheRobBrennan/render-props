@@ -1,15 +1,38 @@
 import React, { Component } from 'react'
 
-const Amount = ({ amount, onIncrement, onDecrement }) => (
-  <div>
-    <span>US Dollar: {amount}</span>
-    <button type="button" onClick={onIncrement}>
-      +
-    </button>
-    <button type="button" onClick={onDecrement}>
-      -
-    </button>
-  </div>
-)
+class Amount extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      amount: 0,
+    }
+  }
+
+  onIncrement = () => {
+    this.setState(state => ({ amount: state.amount + 1 }))
+  }
+
+  onDecrement = () => {
+    this.setState(state => ({ amount: state.amount - 1 }))
+  }
+
+  render() {
+    return (
+      <div>
+        <span>US Dollar: {this.state.amount} </span>
+
+        <button type="button" onClick={this.onDecrement}>
+          -
+        </button>
+        <button type="button" onClick={this.onIncrement}>
+          +
+        </button>
+
+        {this.props.children(this.state.amount)}
+      </div>
+    )
+  }
+}
 
 export default Amount

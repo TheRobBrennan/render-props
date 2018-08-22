@@ -4,41 +4,21 @@ import Amount from './components/Amount'
 import Euro from './components/Euro'
 import Pound from './components/Pound'
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      amount: 0,
-    }
-  }
+/*
+  Render prop pattern => Instead of passing the currency components as components, we are passing a function that renders them. 
 
-  onIncrement = () => {
-    this.setState(state => ({ amount: state.amount + 1 }))
-  }
+  Note how this allows the wrapping component (Amount) the ability to pass data to its inner composed components. The children prop becomes children as a function instead of simply being React components.
+*/
 
-  onDecrement = () => {
-    this.setState(state => ({ amount: state.amount - 1}))
-  }
-
-  render(){
-    return (
+const App = () => (
+  <Amount>
+    {amount => (
       <div>
-        <Amount amount={this.state.amount} onIncrement={this.onIncrement} onDecrement={this.onDecrement} />
-        {/* 
-          Imagine a scenario where you have currency components that need to use the value of amount.
-
-          This approach will use lifting state to the parent component to render the currency components using the value in our Amount component: 
-          
-          <Euro amount={this.state.amount} />
-          <Pound amount={this.state.amount} />
-          
-          This is a valid solution. The App component has turned into a stateful class component, and the Amount component is now a functional stateless component.
-        */}
-        <Euro amount={this.state.amount} />
-        <Pound amount={this.state.amount} />
+        <Pound amount={amount} />
+        <Euro amount={amount} />
       </div>
-    )
-  }
-}
+    )}
+  </Amount>
+)
 
 export default App
