@@ -1,5 +1,5 @@
 // Sample project for the tutorial at https://www.robinwieruch.de/react-render-props-pattern/
-import React, { Component } from 'react'
+import React from 'react'
 import Amount from './components/Amount'
 import Euro from './components/Euro'
 import Pound from './components/Pound'
