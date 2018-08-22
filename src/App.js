@@ -1,6 +1,8 @@
 // Sample project for the tutorial at https://www.robinwieruch.de/react-render-props-pattern/
 import React, { Component } from 'react'
 import Amount from './components/Amount'
+import Euro from './components/Euro'
+import Pound from './components/Pound'
 
 class App extends Component {
   constructor(props){
@@ -32,6 +34,8 @@ class App extends Component {
           
           This is a valid solution. The App component has turned into a stateful class component, and the Amount component is now a functional stateless component.
         */}
+        <Euro amount={this.state.amount} />
+        <Pound amount={this.state.amount} />
       </div>
     )
   }
