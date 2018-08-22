@@ -14,9 +14,16 @@ import Pound from './components/Pound'
 
 const App = () => (
   <Amount
-    render={amount => (
+    renderAmountOne={amount => (
       <div>
-        <h1>My Currency Converter</h1>
+        <h2>My one Amount</h2>
+        <Pound amount={amount} />
+        <Euro amount={amount} />
+      </div>
+    )}
+    renderAmountTwo={amount => (
+      <div>
+        <h2>My other Amount</h2>
         <Pound amount={amount} />
         <Euro amount={amount} />
       </div>

@@ -22,6 +22,8 @@ class Amount extends Component {
       <div>
         <span>US Dollar: {this.state.amount} </span>
 
+        {this.props.renderAmountTwo(this.state.amount)}
+
         <button type="button" onClick={this.onDecrement}>
           -
         </button>
@@ -29,7 +31,7 @@ class Amount extends Component {
           +
         </button>
 
-        {this.props.render(this.state.amount)}
+        {this.props.renderAmountOne(this.state.amount)}
       </div>
     )
   }
